@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: %NAMESPACE%
+  name: %NAMESPACE%-config
+  labels:
+    app: %NAMESPACE%
+data:
+  app.db.database: "%NAMESPACE%.%NAMESPACE%"
+  app.db.cluster.name: "%NAMESPACE%_cluster"
+  app.db.cluster.replication.db: "replica_db"
+  app.db.pool.backends: "0:%NAMESPACE%-db-node-0.%NAMESPACE%-db::::,1:%NAMESPACE%-db-node-1.%NAMESPACE%-db::::,2:%NAMESPACE%-db-node-2.%NAMESPACE%-db::::"
+

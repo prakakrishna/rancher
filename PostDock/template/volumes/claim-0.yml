@@ -1,0 +1,15 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: db-data-%NAMESPACE%-db-node-0
+  namespace: %NAMESPACE%
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+  selector:
+    matchLabels:
+      system: %NAMESPACE%-db
+      node: node-0
